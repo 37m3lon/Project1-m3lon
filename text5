@@ -1,0 +1,58 @@
+Started by user M3lon
+
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins
+ in /var/jenkins_home/jobs/Project1-m3lon/workspace
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (SCM)
+[Pipeline] git
+The recommended git tool is: NONE
+using credential github-m3lon
+ > git rev-parse --resolve-git-dir /var/jenkins_home/jobs/Project1-m3lon/workspace/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/37m3lon/Project1-m3lon # timeout=10
+Fetching upstream changes from https://github.com/37m3lon/Project1-m3lon
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.5'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/37m3lon/Project1-m3lon +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision b8e1ef1320392a86da6680a33be5905571376ebf (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f b8e1ef1320392a86da6680a33be5905571376ebf # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D main # timeout=10
+ > git checkout -b main b8e1ef1320392a86da6680a33be5905571376ebf # timeout=10
+Commit message: "Create text4"
+ > git rev-list --no-walk b8e1ef1320392a86da6680a33be5905571376ebf # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SonarQube Analysis)
+[Pipeline] tool
+[Pipeline] withSonarQubeEnv
+Injecting SonarQube environment variables using the configuration: SonarQube 
+[Pipeline] {
+[Pipeline] sh
++ /var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQube_Scanner/bin/sonar-scanner -Dsonar.java.binaries=. -Dsonar.projectKey=Project1-m3lon -Dsonar.login=sqa_7c00801e29150a5ae876508db896a6516524dff8
+09:28:33.270 INFO  Scanner configuration file: /var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQube_Scanner/conf/sonar-scanner.properties
+09:28:33.277 INFO  Project root configuration file: /var/jenkins_home/jobs/Project1-m3lon/workspace/sonar-project.properties
+09:28:33.317 INFO  SonarScanner CLI 7.0.2.4839
+09:28:33.320 INFO  Java 17.0.14 Eclipse Adoptium (64-bit)
+09:28:33.321 INFO  Linux 6.11.0-19-generic amd64
+09:28:33.398 INFO  User cache: /var/jenkins_home/.sonar/cache
+09:28:34.336 ERROR Failed to query server version: Call to URL [http://172.18.0.3:9000/api/v2/analysis/version] failed: Failed to connect to /172.18.0.3:9000
+09:28:34.337 INFO  EXECUTION FAILURE
+09:28:34.338 INFO  Total time: 1.120s
+[Pipeline] }
+WARN: Unable to locate 'report-task.txt' in the workspace. Did the SonarScanner succeed?
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 1
+Finished: FAILURE
