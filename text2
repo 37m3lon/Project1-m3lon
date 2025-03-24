@@ -1,0 +1,11 @@
+node{
+    stage('SCM'){
+        git branch: 'main', credentialsId:'github-m3lon',url:'https://github.com/37m3lon/Project1-m3lon'
+    }
+    stage('SonarQube Analysis'){
+        def scannerHome = tool 'SonarQube Scanner';
+        with SonarQubeEnv('SonarQube'){
+            sh "${scannerHome}/bin/sonar-scanner -Dsonar.sources=. -Dsonar.host.url=http://127.0.0.1:9000 -Dsonar.java.binaries=. -Dsonar.projectKey=Project1-m3lon -Dsonar.login=sqa_7c00801e29150a5ae876508db896a6516524dff8"
+        }
+    }
+}
