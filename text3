@@ -1,0 +1,44 @@
+Started by user M3lon
+
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins
+ in /var/jenkins_home/jobs/Project1-m3lon/workspace
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (SCM)
+[Pipeline] git
+The recommended git tool is: NONE
+using credential github-m3lon
+ > git rev-parse --resolve-git-dir /var/jenkins_home/jobs/Project1-m3lon/workspace/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/37m3lon/Project1-m3lon # timeout=10
+Fetching upstream changes from https://github.com/37m3lon/Project1-m3lon
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.5'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/37m3lon/Project1-m3lon +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 7efedfd499630b2bd293fab79b506a8462a301d3 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 7efedfd499630b2bd293fab79b506a8462a301d3 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D main # timeout=10
+ > git checkout -b main 7efedfd499630b2bd293fab79b506a8462a301d3 # timeout=10
+Commit message: "Create text2"
+ > git rev-list --no-walk f0622d15e59c9b9ce93f172adfa635d2952f577f # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SonarQube Analysis)
+[Pipeline] tool
+[Pipeline] withSonarQubeEnv
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: SonarQube installation defined in this job (SonarQube) does not match any configured installation. Number of installations that can be configured: 1.
+If you want to reassign jobs to a different SonarQube installation, check the documentation under https://redirect.sonarsource.com/plugins/jenkins.html
+Finished: FAILURE
